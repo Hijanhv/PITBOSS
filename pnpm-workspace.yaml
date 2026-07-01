@@ -1,3 +1,17 @@
 packages:
   - "apps/*"
   - "packages/*"
+  - "packages/bindings/*"
+
+# esbuild is needed by Vitest; the rest are optional native accelerations /
+# hardware-wallet bindings we don't use, so keep their build scripts off.
+allowBuilds:
+  esbuild: true
+  blake-hash: false
+  bufferutil: false
+  protobufjs: false
+  secp256k1: false
+  tiny-secp256k1: false
+  unrs-resolver: false
+  usb: false
+  utf-8-validate: false
