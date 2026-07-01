@@ -1,0 +1,20 @@
+{
+  "network": "testnet",
+  "rpcUrl": "https://soroban-testnet.stellar.org",
+  "networkPassphrase": "Test SDF Network ; September 2015",
+  "admin": "GBMB2FZK5JTPO7AKAAHQI7VNYICAGPWCVZ5LQ64AEHF3KGLKAFGT2P2R",
+  "token": "CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC",
+  "marketWasmHash": "110e6f117e006eb2b8350f0a35e396ec123e90854ddf04cd87bb39a8b75b0d1f",
+  "contracts": {
+    "oracle": "CA57YKYJSNQTAKOXFJSC7ESJTI5MFOASIELGDAKCGTWVVURYTQUZW5OH",
+    "treasury": "CB5KCQR7IWXDMJ7ON4BVBWJNFIYR5TSXFUKGUXBDMR4H2DJKK3BEG37L",
+    "factory": "CBOOJITGRKEOWRWYEZ2NTB3LWWC4ZI6YQXPW6M6DGYYXDAUNH3RPOGNB"
+  },
+  "sampleMarket": {
+    "id": "CBYMLX7OTJ3XB3FEMXUVCRM2YO3BXQ3CGW2LVNAOQFCDAI25NXT74ECE",
+    "question": "Will BTC close above 100k USD in 2026?",
+    "closeLedger": 3884666,
+    "createTx": "0b515a04f17c3f633d0900091fdf0c52bc871ad49a492d3f1f2a6c743c907b8f",
+    "sampleBetTx": "b7de416af070e69336b17ff7d2873696df34ba0ffd524b6ffde8d1b4c8bf8fa1"
+  }
+}
