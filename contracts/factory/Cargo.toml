@@ -1,0 +1,22 @@
+[package]
+name = "factory"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[features]
+# Enables the Factory->Market cross-contract DEPLOY test, which imports the
+# built market.wasm. Requires `stellar contract build` to have run first.
+wasm-tests = []
+
+[lib]
+crate-type = ["lib", "cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+oracle = { path = "../oracle" }
+treasury = { path = "../treasury" }
