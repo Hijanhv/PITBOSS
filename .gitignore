@@ -3,6 +3,8 @@ target/
 *.wasm.d
 .stellar/
 .soroban/
+# Generated Soroban test snapshots
+**/test_snapshots/
 
 # Node
 node_modules/
