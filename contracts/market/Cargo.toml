@@ -1,0 +1,19 @@
+[package]
+name = "market"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["lib", "cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+# Real sibling contracts, registered in-env to exercise cross-contract calls
+# without needing built Wasm. Dev-only: does not affect the Wasm build.
+oracle = { path = "../oracle" }
+treasury = { path = "../treasury" }
