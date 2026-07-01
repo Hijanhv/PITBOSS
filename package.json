@@ -1,0 +1,20 @@
+{
+  "name": "pitboss",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PITBOSS — a permissionless pari-mutuel prediction-market protocol on Stellar. Every market answers to the boss.",
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "contracts:build": "stellar contract build",
+    "contracts:test": "cargo test --workspace"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.4"
+  }
+}

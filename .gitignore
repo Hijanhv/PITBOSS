@@ -1,0 +1,23 @@
+# Rust / Soroban
+target/
+*.wasm.d
+.stellar/
+.soroban/
+
+# Node
+node_modules/
+.next/
+dist/
+.turbo/
+*.tsbuildinfo
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.DS_Store
+*.log
+.vscode/
+.idea/
