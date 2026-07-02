@@ -151,12 +151,19 @@ All three cross-contract directions are exercised by real tests — the Market s
 
 ---
 
-## Demo (1–2 min)
+## Screenshots
 
-1. Connect a wallet → **Create** a market (Factory deploys a child live).
-2. Two wallets bet opposite sides → the tote board **steams** as odds move; the **live tape** streams every event.
-3. A reporter publishes the outcome to the **Oracle**; anyone **resolves** the market (Market reads the Oracle).
-4. The winner **claims** their pro-rata share. Every step links to Stellar Expert.
+### Mobile-responsive UI (live testnet)
+
+| Markets | Market detail — tote board · mesh · live tape |
+|---|---|
+| <img src="docs/screenshots/mobile-home.png" width="300" alt="PITBOSS markets — mobile"> | <img src="docs/screenshots/mobile-market.png" width="300" alt="PITBOSS market detail — mobile"> |
+
+### CI/CD pipeline + tests
+
+| GitHub Actions — both jobs green | Test output — 33 passing (21 contract + 12 web) |
+|---|---|
+| <img src="docs/screenshots/ci-pipeline.png" width="420" alt="CI pipeline passing"> | <img src="docs/screenshots/ci-tests.png" width="420" alt="Tests passing"> |
 
 ---
 
