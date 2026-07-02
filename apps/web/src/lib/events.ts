@@ -3,8 +3,11 @@ import { contractIds } from "./config";
 import { rpcServer } from "./stellar";
 import { toHex } from "./format";
 
-// How far back to look when (re)building the tape. ~2.5h of testnet ledgers.
-const LOOKBACK_LEDGERS = 1800;
+// How far back to look when (re)building the tape. ~22h of testnet ledgers —
+// wide enough to surface real activity, within the RPC's event retention. If
+// the window ever exceeds retention we fall back to a small recent window.
+const LOOKBACK_LEDGERS = 16000;
+const FALLBACK_LEDGERS = 2000;
 
 export type TapeKind =
   | "bet"
@@ -109,16 +112,25 @@ function parse(ev: any): TapeEvent | null {
  */
 export async function fetchTape(extraContractIds: string[] = []): Promise<TapeEvent[]> {
   const server = rpcServer();
-  const latest = await server.getLatestLedger();
-  const startLedger = Math.max(1, latest.sequence - LOOKBACK_LEDGERS);
+  const latest = (await server.getLatestLedger()).sequence;
   const ids = Array.from(new Set([...contractIds, ...extraContractIds])).slice(0, 5);
 
-  const res = await server.getEvents({
-    startLedger,
-    filters: [{ type: "contract", contractIds: ids }],
-  });
+  // Try the wide window; if the RPC rejects it (retention), retry a small one.
+  let events: unknown[] = [];
+  for (const back of [LOOKBACK_LEDGERS, FALLBACK_LEDGERS]) {
+    try {
+      const res = await server.getEvents({
+        startLedger: Math.max(1, latest - back),
+        filters: [{ type: "contract", contractIds: ids }],
+      });
+      events = res.events;
+      break;
+    } catch {
+      // try the next (smaller) window
+    }
+  }
 
-  const parsed = res.events.map(parse).filter((e): e is TapeEvent => e !== null);
+  const parsed = events.map(parse).filter((e): e is TapeEvent => e !== null);
   // Dedupe by id, newest first.
   const seen = new Set<string>();
   return parsed
