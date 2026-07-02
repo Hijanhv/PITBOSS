@@ -1,4 +1,4 @@
-import { Keypair, rpc } from "@stellar/stellar-sdk";
+import { rpc } from "@stellar/stellar-sdk";
 import { Client as FactoryClient } from "@pitboss/factory";
 import type { MarketRef } from "@pitboss/factory";
 import { Client as MarketClient } from "@pitboss/market";
@@ -23,9 +23,10 @@ export interface Signer {
   signTransaction: SignTransaction;
 }
 
-// Throwaway source account used only to build read-only simulations — reads
-// never touch balance or sequence, so any valid key works.
-const READ_SOURCE = Keypair.random().publicKey();
+// Source account used only to build read-only simulations. The RPC fetches this
+// account's sequence to assemble the envelope, so it must EXIST on-chain — a
+// random key 404s. We reuse the protocol deployer: no signing, no funds move.
+const READ_SOURCE = "GBMB2FZK5JTPO7AKAAHQI7VNYICAGPWCVZ5LQ64AEHF3KGLKAFGT2P2R";
 
 const allowHttp = config.rpcUrl.startsWith("http://");
 
