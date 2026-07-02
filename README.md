@@ -59,7 +59,7 @@ flowchart LR
 - Market created (Factory → Market deploy): [`0b515a04…907b8f`](https://stellar.expert/explorer/testnet/tx/0b515a04f17c3f633d0900091fdf0c52bc871ad49a492d3f1f2a6c743c907b8f)
 - Sample bet (Market → Treasury fee routing): [`b7de416a…8bf8fa1`](https://stellar.expert/explorer/testnet/tx/b7de416af070e69336b17ff7d2873696df34ba0ffd524b6ffde8d1b4c8bf8fa1)
 
-🔗 **Live app:** _deployed on Vercel — see the repository homepage link._
+🔗 **Live app:** **https://pitboss-theta.vercel.app**
 
 ---
 
